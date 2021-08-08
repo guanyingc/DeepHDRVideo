@@ -31,18 +31,18 @@
   * [Testing on the customized dataset](#testing-on-the-customized-dataset)
   * [HDR evaluation metrics](#hdr-evaluation-metrics)
   * [Tonemapping](#tonemapping)
-  * [Precomputed Results](#precomputed-results)
+  * [Precomputed results](#precomputed-results)
 * [Training](#training)
 * [License](#license)
 * [Citation](#citation)
 
 ## Overview:
-We provide testing and training code.
+We provide testing and training codes.
 Details of the training and testing dataset can be found in [DeepHDRVideo-Dataset](https://github.com/guanyingc/DeepHDRVideo-Dataset).
 Datasets and the trained models can be download in [Google Drive](https://drive.google.com/drive/folders/10CzRavlDob7QkI5zAtQSWLfxeOUPRFZD?usp=sharing) or BaiduYun (TODO).
 
 ### Dependencies
-This model is implemented in [PyTorch](https://pytorch.org/) and tested with Ubuntu (14.04 and 16.04) and Centos 7. 
+This method is implemented in [PyTorch](https://pytorch.org/) and tested with Ubuntu (14.04 and 16.04) and Centos 7. 
 - Python 3.7 
 - PyTorch 1.10 and torchvision 0.30
 
@@ -57,7 +57,7 @@ source activate hdr
 
 pip install -r requirements.txt
 
-# Build deformable convolutional layer, tested with pytorch 1.1, g++5.5, and cuda 9.0
+# Build deformable convolutional layer, tested with PyTorch 1.1, g++5.5, and Cuda 9.0
 cd extensions/dcn/
 python setup.py develop
 # Please refer to https://github.com/xinntao/EDVR if you have difficulty in building this module
@@ -85,7 +85,7 @@ python run_model.py --gpu_ids 0 --model hdr3E_flow2s_model \
 ### Testing on the TOG13 dataset
 Please download this dataset from `TOG13_Dynamic_Dataset.tgz` and unzip to `data/`. Normally when testing on a video, we have to first compute the similarity transformation matrices between neighboring frames using the following commands.
 ```shell
-# However, this is optional as the downloaded dataset already contains the require transformation matrices for each scene in Affine_Trans_Matrices/.
+# However, this is optional as the downloaded dataset already contains the required transformation matrices for each scene in Affine_Trans_Matrices/.
 python utils/compute_nbr_trans_for_video.py --in_dir data/TOG13_Dynamic_Dataset/ --crf data/TOG13_Dynamic_Dataset/BaslerCRF.mat --scene_list 2Exp_scenes.txt
 python utils/compute_nbr_trans_for_video.py --in_dir data/TOG13_Dynamic_Dataset/ --crf data/TOG13_Dynamic_Dataset/BaslerCRF.mat --scene_list 3Exp_scenes.txt
 ```
@@ -142,7 +142,7 @@ The dynamic with GT dataset can be found in Google Drive (`/Real_Dataset/Dynamic
 ### Testing on the customized dataset 
 You have two options to test our method on your dataset. In the first option, you have to implement a customized Dataset class to load your data, which should not be difficult. Please refer to `datasets/tog13_online_align_dataset.py`.
 
-If you don't want to implement your own Dataset class, you may reuse `datasets/tog13_online_align_dataset.py`. However, you have to first arrange your dataset similar to TOG13 dataset.
+If you don't want to implement your own Dataset class, you may reuse `datasets/tog13_online_align_dataset.py`. However, you have to first arrange your dataset similar to the TOG13 dataset.
 Then you can run `utils/compute_nbr_trans_for_video.py` to compute the similarity transformation matrices between neighboring frames to enable global alignment.
 ```
 # Use gamma curve if you do not know the camera response function
@@ -162,7 +162,7 @@ All visual results in the experiment are tonemapped using Reinhard et al.’s me
 python utils/tonemapper.py -i /path/to/HDR/
 ```
 
-### Precomputed Results
+### Precomputed results
 The precomputed results can be found in Google Drive (`/Results`) (TODO).
 
 ## Training

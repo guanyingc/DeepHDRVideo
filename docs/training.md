@@ -83,8 +83,8 @@ Due to the limited time for code cleaning, this repository might contain some re
 ```
 </details>
 
-### Prepare the training data
-Please first go through [DeepHDRVideo-Dataset](https://github.com/guanyingc/DeepHDRVideo-Dataset) to familiarize yourself with the training datast.
+### Prepare the training dataset
+Please first go through [DeepHDRVideo-Dataset](https://github.com/guanyingc/DeepHDRVideo-Dataset) to familiarize yourself with the training dataset.
 Download `Synthetic_Train_Data_HdM-HDR-2014.tgz`, `Synthetic_Train_Data_LiU_HDRv.tgz`, `vimeo_septuplet.tgz` from Google Drive (`Synthetic_Dataset/`) and unzip them in `data/`.
 
 ### Step 1: Train CoarseNet
