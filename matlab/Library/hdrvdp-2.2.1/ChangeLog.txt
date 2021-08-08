@@ -1,0 +1,46 @@
+21 January 2014 HDR-VDP 2.2.1
+   * Fixed issue when "Q" varied with image size. Q is now scaled 
+     differently: 100 for the best quality and gets lower.
+   * Q_MOS has been removed as unreliable. Use "Q instead. Note that the 
+     relation between Q and MOS is not specified for now.
+   * Some memory optimizations
+
+19 October 2014 HDR-VDP 2.2.0
+
+   * Improved quality predictions (pooling function optimized for HDR quality data set).
+   * matlabPyrTools bundled with HDR-VDP-2 for easier installation
+   * New improved hdrvdp_visualize.m
+   * Surround luminance (surround_l) is set to very low luminance (1e-5) by default
+   * Added check for very low physical values to avoid a common misuse for color encodings
+   * Minor performance improvement (caching)
+
+21 January 2013 HDR-VDP 2.1.3
+
+   * Updated documentation
+   * Better compatibility with earlier versions of matlab
+   * Better handling of surround_l - if computed automatically, it is kept 
+     the same for both reference and test images. This avoids false detection
+     at the image boarder.
+
+27 October 2011 HDR-VDP 2.1.2
+
+   * Updated "epsilon" values that prevent NaN due to log of 0, but
+     also cause Q_MOS to be relatively low for two identical images
+
+30 August 2011 HDR-VDP 2.1.1
+
+   * Fixed CSF formula in the code to be consistent with the
+     paper. The CSF fitting parameters were updated as well.
+
+17 June 2011  HDR-VDP 2.1
+
+   * Extened model: CSF measured at 0.002 cd/m^2
+   * New fit: fit to the new CSF measurements
+   * New measurements: csfla dataset
+   * New measurements: complexfest dataset
+   * Bug fixed: nCSF did not change below 1 cd/m^2
+
+28 April 2011  HDR-VDP 2.0
+
+   This is the initial release, included with the supplementary
+   materials of the SIGGRAPH'11 paper.

@@ -1,0 +1,9 @@
+torch==1.1.0
+torchvision==0.3.0
+matplotlib
+pillow<6.2.2
+opencv-python
+scipy
+scikit-image
+notebook==5.7.5
+ffmpeg-python
