@@ -1,0 +1,224 @@
+<script src="http://www.google.com/jsapi" type="text/javascript"></script> 
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+
+<style type="text/css">
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight:300;
+  font-size:18px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+}	
+h1 {
+  font-weight:300;
+}
+
+.disclaimerbox {
+  background-color: #eee;		
+  border: 1px solid #eeeeee;
+  border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  -webkit-border-radius: 10px ;
+  padding: 20px;
+}
+
+video.header-vid {
+  height: 140px;
+  border: 1px solid black;
+  border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  -webkit-border-radius: 10px ;
+}
+
+img.header-img {
+  height: 140px;
+  border: 1px solid black;
+  border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  -webkit-border-radius: 10px ;
+}
+
+img.rounded {
+  border: 0px solid #eeeeee;
+  border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  -webkit-border-radius: 10px ;
+}
+
+a:link,a:visited
+  {
+  color: #1367a7;
+  text-decoration: none;
+}
+a:hover {
+  color: #208799;
+}
+
+  td.dl-link {
+    height: 160px;
+    text-align: center;
+    font-size: 22px;
+  }
+
+  .vert-cent {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  hr
+    {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  }
+</style>
+
+<html>
+  <head>
+    <title></title>
+    <meta property="og:title" content="HDR Video Reconstruction: A Coarse-to-fine Network and A Real-world Benchmark Dataset, In ICCV 2021." />
+  </head>
+
+  <body>
+    <br>
+    <center>
+      <span style="font-size:42px">HDR Video Reconstruction: A Coarse-to-fine Network and A Real-world Benchmark Dataset</span><br>
+      <table align=center width=900px>
+        <tr>
+          <td align=center width=900px>
+            <span style="font-size:22px"><a href="https://guanyingc.github.io">Guanying Chen<sup>1,2</sup></a></span> &emsp;&emsp;&emsp;
+            <span style="font-size:22px"><a href="http://chaofengc.github.io/">Chaofeng Chen<sup>1</sup></a></span> &emsp;&emsp;&emsp;
+            <span style="font-size:22px"><a href="https://scholar.google.com/citations?user=5hsEmuQAAAAJ&hl=en">Shi Guo<sup>2,3</sup></a></span> &emsp;&emsp;&emsp;
+            <span style="font-size:22px"><a href="https://scholar.google.com/citations?user=fCnuU9YAAAAJ&hl=en">Zhetong Liang<sup>2,3</sup></a></span> <br>
+            <span style="font-size:22px"><a href="http://i.cs.hku.hk/~kykwong/">Kwan-Yee K. Wong<sup>1</sup></a></span> &emsp;&emsp;&emsp;
+            <span style="font-size:22px"><a href="https://www4.comp.polyu.edu.hk/~cslzhang/">Lei Zhang<sup>2,3</sup></a></span> &emsp;&emsp;&emsp;
+          </td>
+        </tr>
+      </table>
+      <table align=center width=800px>
+        <td align=center width=300px>
+          <span style="font-size:21px"><sup>1</sup>The University of Hong Kong &emsp;&emsp;&emsp; <sup>2</sup>DAMO Academy, Alibaba Group</span> <br>
+          <span style="font-size:21px"><sup>3</sup>The Hong Kong Polytechnic University &emsp;
+        </td>
+      </table>
+      <br>
+      <table align=center width=900px>
+        <tr>
+          <td align=center width=900px>
+            <center>
+              <span style="font-size:22px"><a href="https://github.com/guanyingc/DeepHDRVideo">Code [PyTorch]</a></span> &emsp; &emsp;
+              <span style="font-size:22px"><a href="https://github.com/guanyingc/DeepHDRVideo-Dataset">Dataset</a></span> &emsp; &emsp;
+              <span style="font-size:22px"><a href="https://guanyingc.github.io/papers/DeepHDRVideo_iccv2021.pdf">Paper [ICCV 2021]</a> </span> &emsp; &emsp;
+              <span style="font-size:22px"><a href="https://guanyingc.github.io/papers/DeepHDRVideo_iccv2021_sup.pdf">Supplementary [PDF]</a> </span>  &emsp; &emsp;
+            </center>
+          </td>
+        </tr>
+      </table>
+    </center>
+    <br>
+
+    <table align=center width=1000px>
+      <tr>
+        <td align=center width=1000px>
+          <img class="round" style="height:300px" src = "./files/teaser.png">
+        </td>
+      </tr> 
+    </table>
+    <hr>
+
+    <table align=center width=900px>
+      <center><h1>Abstract</h1></center>
+      <p>
+      High dynamic range (HDR) video reconstruction from sequences captured with alternating exposures is a very challenging problem. Existing methods often align low dynamic range (LDR) input sequence in the image space using optical flow, and then merge the aligned images to produce HDR output. However, accurate alignment and fusion in the image space are difficult due to the missing details in the over-exposed regions and noise in the under-exposed regions, resulting in unpleasing ghosting artifacts. To enable more accurate alignment and HDR fusion, we introduce a coarse-to-fine deep learning framework for HDR video reconstruction. Firstly, we perform coarse alignment and pixel blending in the image space to estimate the coarse HDR video. Secondly, we conduct more sophisticated alignment and temporal fusion in the feature space of the coarse HDR video to produce better reconstruction. Considering the fact that there is no publicly available dataset for quantitative and comprehensive evaluation of HDR video reconstruction methods, we collect such a benchmark dataset, which contains 97 sequences of static scenes and 184 testing pairs of dynamic scenes. Extensive experiments show that our method outperforms previous state-of-the-art methods.
+      </p>
+    </table>
+    <hr>
+
+    <!--
+      <table align=center width=900px>
+      <center><h1>Introduction Talk (Video)</h1></center>
+
+      <center><iframe width="800" height="450" src="https://www.youtube.com/embed/9eMhirg7m78" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+      <br>
+      </table>
+      <hr>
+    -->
+
+    <table align=center>
+      <center><h1>Method</h1></center>
+      <tr>
+        <td align=center width=1000px>
+          <img class="round" style="width:1000px" src="./files/network.jpg"/></img>
+        </td>
+      </tr>
+      <tr>
+        <td align=center>
+          <br>
+          Network architecture of the proposed coarse-to-fine framework for videos captured with two alternating exposures.
+        </td>
+      </tr>
+    </table>
+    <hr>
+
+    <table align=center width=900px>
+      <center><h1>Video Results (Video)</h1></center>
+      <center><iframe width="800" height="450" src="https://www.youtube.com/embed/ibMTIdKmEAc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+      <br>
+    </table>
+    <hr>
+
+    <table align=center width=1000px>
+      <center><h1>Experimental Results</h1></center>
+      <center><h2>1. Quantitative Results on Real Dataset</h2></center>
+      <table align=center width=1000px>
+        <tr> <td align=center>
+            <img class="round" style="width:1000px" src="./files/result_real_quant.jpg"/>
+          </td> </tr>
+      </table>
+
+      <center><h2>2. Visual comparison on Kalantari13 dataset.</h2></center>
+      <table align=center width=1000px>
+        <tr> <td align=center>
+            <img class="round" style="width:1000px" src="./files/result_k13_qual.jpg"/>
+          </td> </tr>
+      </table>
+
+    </table>
+    <br>
+    <hr>
+
+    <table align=center width=1000px>
+      <center><h1>Code and Dataset</h1></center>
+
+      <tr>
+        <td width=1000px align=center>
+          <span style="font-size:21px">Code and models are available at <a href="https://github.com/guanyingc/DeepHDRVideo">https://github.com/guanyingc/DeepHDRVideo</a>.</span> 
+          <td>
+      </tr>
+      <tr>
+        <td width=1000px align=center>
+          <span style="font-size:21px">Dataset are available at <a href="https://github.com/guanyingc/DeepHDRVideo-Dataset">https://github.com/guanyingc/DeepHDRVideo-Dataset</a>.</span> 
+          <td>
+      </tr>
+    </table>
+    <hr>
+
+    <table align=center width=1000px>
+      <tr>
+        <td width=400px>
+          <center>
+          <center><h1>Acknowledgments</h1></center>
+          This work is supported by the Hong Kong RGC RIF grant (R5001-18) and Hong Kong RGC GRF grant (project# 17203119).
+          </center>
+        </td>
+      </tr>
+    </table>
+    <br>
+
+    <p style="text-align:center;font-size:16px;">
+    Webpage template borrowed from <a href="https://richzhang.github.io/splitbrainauto/">Split-Brain Autoencoders, CVPR 2017</a>.
+    </p>
+  </body>
+</html>
