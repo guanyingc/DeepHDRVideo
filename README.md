@@ -17,7 +17,7 @@
 <!--
 ## TODO:
 - Precomputed results
-- Prepare visual samples for the capture datasets
+- Prepare baiduyun
 -->
 
 ## Table of Contents
@@ -38,7 +38,7 @@
 
 ## Overview:
 We provide testing and training codes.
-Details of the training and testing dataset can be found in [DeepHDRVideo-Dataset](https://github.com/guanyingc/DeepHDRVideo-Dataset).
+Details of the training and testing dataset can be found in [DeepHDRVideo-Dataset](https://guanyingc.github.io/DeepHDRVideo-Dataset/).
 Datasets and the trained models can be download in [Google Drive](https://drive.google.com/drive/folders/10CzRavlDob7QkI5zAtQSWLfxeOUPRFZD?usp=sharing) or BaiduYun (TODO).
 
 ### Dependencies
@@ -64,7 +64,7 @@ python setup.py develop
 ```
 
 ## Testing
-Please first go through [DeepHDRVideo-Dataset](https://github.com/guanyingc/DeepHDRVideo-Dataset) to familiarize yourself with the testing dataset.
+Please first go through [DeepHDRVideo-Dataset](https://guanyingc.github.io/DeepHDRVideo-Dataset/) to familiarize yourself with the testing dataset.
 
 The trained models can be found in Google Drive (`Models/`). Download and place it to `data/models/`.
 
