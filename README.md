@@ -28,6 +28,7 @@
   * [Testing on the TOG13 dataset](#testing-on-the-tog13-dataset)
   * [Testing on the captured static dataset](#testing-on-the-captured-static-dataset)
   * [Testing on the captured dynamic with GT dataset](#testing-on-the-captured-dynamic-with-gt-dataset)
+  * [Testing on the captured dynamic without GT dataset](#testing-on-the-captured-dynamic-without-gt-dataset)
   * [Testing on the customized dataset](#testing-on-the-customized-dataset)
   * [HDR evaluation metrics](#hdr-evaluation-metrics)
   * [Tonemapping](#tonemapping)
@@ -134,10 +135,16 @@ python run_model.py --gpu_ids 0 --model hdr3E_flow2s_model \
     --mnet_name weight_net  --fnet_checkp data/models/CoarseToFine_3Exp/flow_net.pth --mnet_checkp data/models/CoarseToFine_3Exp/weight_net.pth --mnet2_checkp data/models/CoarseToFine_3Exp/refine_net.pth
 ```
 
-<!--
 ### Testing on the captured dynamic without GT dataset
 The dynamic with GT dataset can be found in Google Drive (`/Real_Dataset/Dynamic_noGT/`).
--->
+```shell
+# Test our method on two-exposure data. Download dynamic_data_noGT_2exp_RGB_JPG.tgz and unzip to data/
+# Results can be found in data/models/CoarseToFine_2Exp/
+python run_model.py --gpu_ids 0 --model hdr2E_flow2s_model \
+    --benchmark real_benchmark_dataset --bm_dir data/dynamic_data_noGT_2exp_RGB_JPG --test_scene all \
+    --mnet_name weight_net --mnet_checkp data/models/CoarseToFine_2Exp/weight_net.pth --fnet_checkp data/models/CoarseToFine_2Exp/flow_net.pth --mnet2_checkp data/models/CoarseToFine_2Exp/refine_net.pth
+# It is similar to test on three-exposure data
+```
 
 ### Testing on the customized dataset 
 You have two options to test our method on your dataset. In the first option, you have to implement a customized Dataset class to load your data, which should not be difficult. Please refer to `datasets/tog13_online_align_dataset.py`.

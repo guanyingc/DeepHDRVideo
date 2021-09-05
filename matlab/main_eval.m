@@ -40,11 +40,19 @@ for id = 1: ndataset
     fprintf('****Wrinting data to files*****\n')
     [summary_str, tex_summary_str] = save_hdr_txt_results(est_dir, all_results, expos(1:num), summary_filename);
 
+    % Saving HDR-VQM
+    cfg_hdrvqm.est_hdr_max = est_hdr_max;
+
+    hdrvqm = hdr_vqm_ICCV2021('', '', gt_dir, est_dir, cfg_hdrvqm);
+
+    normalized_hdrvqm = (4. / (1 + exp(hdrvqm)) - 1) * 100;
+    hdrvqm_str = sprintf('[%s %dExpo] HDR-VQM: %.2f\n', method, nexps, normalized_hdrvqm);
+
     fprintf('****Wrinting summary data to %s*****\n', summary_filename)
     fid = fopen(summary_filename, 'a');
     fwrite(fid, sprintf('\n[%s %dExpo] est_dir: %s\n', method, nexps, est_dir));
 
-    %fwrite(fid, hdrvqm_str);
+    fwrite(fid, hdrvqm_str);
 
     for i = 1: length(summary_str)
         fprintf(summary_str{i});
@@ -52,7 +60,7 @@ for id = 1: ndataset
     for i = 1: length(tex_summary_str)
         fprintf(tex_summary_str{i});
     end
-    %fprintf(hdrvqm_str);
+    fprintf(hdrvqm_str);
 
     fclose(fid);
 end
