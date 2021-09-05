@@ -139,6 +139,7 @@ python run_model.py --gpu_ids 0 --model hdr3E_flow2s_model \
 The dynamic with GT dataset can be found in Google Drive (`/Real_Dataset/Dynamic_noGT/`).
 ```shell
 # Test our method on two-exposure data. Download dynamic_data_noGT_2exp_RGB_JPG.tgz and unzip to data/
+# Note that we provide the JPG dataset only for illustrating the testing process
 # Results can be found in data/models/CoarseToFine_2Exp/
 python run_model.py --gpu_ids 0 --model hdr2E_flow2s_model \
     --benchmark real_benchmark_dataset --bm_dir data/dynamic_data_noGT_2exp_RGB_JPG --test_scene all \
