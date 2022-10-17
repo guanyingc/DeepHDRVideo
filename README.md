@@ -171,7 +171,7 @@ python utils/tonemapper.py -i /path/to/HDR/
 ```
 
 ### Precomputed results
-The precomputed results can be found in Google Drive (`/Results`) (TODO).
+The precomputed results can be found in Google Drive (`/Results`).
 
 ## Training
 The training process is described in [docs/training.md](docs/training.md).
