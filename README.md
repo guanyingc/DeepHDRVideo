@@ -40,7 +40,7 @@
 ## Overview:
 We provide testing and training codes.
 Details of the training and testing dataset can be found in [DeepHDRVideo-Dataset](https://guanyingc.github.io/DeepHDRVideo-Dataset/).
-Datasets, the trained models, and the computed results can be download in [One Drive](https://connecthkuhk-my.sharepoint.com/:f:/g/personal/u3004356_connect_hku_hk/Ep3hSvMQo8tIhesJHwgFv64Bq1R7v6oi9hnLshzw55vedg?e=D2bBxr).
+Datasets, the trained models, and the computed results can be download in [BaiduYun](https://pan.baidu.com/s/19SkOFmOdlQTujuazMlUq2Q?pwd=xwmq).
 
 ### Dependencies
 This method is implemented in [PyTorch](https://pytorch.org/) and tested with Ubuntu (14.04 and 16.04) and Centos 7. 
@@ -67,10 +67,10 @@ python setup.py develop
 ## Testing
 Please first go through [DeepHDRVideo-Dataset](https://guanyingc.github.io/DeepHDRVideo-Dataset/) to familiarize yourself with the testing dataset.
 
-The trained models can be found in One Drive (`Models/`). Download and place it to `data/models/`.
+The trained models can be found in BaiduYun (`Models/`). Download and place it to `data/models/`.
 
 ### Testing on the synthetic test dataset
-The synthetic test dataset can be found in One Drive (`/Synthetic_Dataset/HDR_Synthetic_Test_Dataset.tgz`). Download and unzip it to `data/`. Note that we donot perform global motion alignment for this synthetic dataset.
+The synthetic test dataset can be found in BaiduYun (`/Synthetic_Dataset/HDR_Synthetic_Test_Dataset.tgz`). Download and unzip it to `data/`. Note that we donot perform global motion alignment for this synthetic dataset.
 ```shell
 # Test our method on two-exposure data. Results can be found in data/models/CoarseToFine_2Exp/
 python run_model.py --gpu_ids 0 --model hdr2E_flow2s_model \
@@ -106,7 +106,7 @@ python run_model.py --gpu_ids 0 --model hdr3E_flow2s_model \
 ```
 
 ### Testing on the captured static dataset
-The global motion augmented static dataset can be found in One Drive (`/Real_Dataset/Static/`).
+The global motion augmented static dataset can be found in BaiduYun (`/Real_Dataset/Static/`).
 ```shell
 # Test our method on two-exposure data. Download static_RGB_data_2exp_rand_motion_release.tgz and unzip to data/
 # Results can be found in data/models/CoarseToFine_2Exp/
@@ -122,7 +122,7 @@ python run_model.py --gpu_ids 0 --model hdr3E_flow2s_model \
 ```
 
 ### Testing on the captured dynamic with GT dataset
-The dynamic with GT dataset can be found in One Drive (`/Real_Dataset/Dynamic/`).
+The dynamic with GT dataset can be found in BaiduYun (`/Real_Dataset/Dynamic/`).
 ```shell
 # Test our method on two-exposure data. Download dynamic_RGB_data_2exp_release.tgz and unzip to data/
 python run_model.py --gpu_ids 0 --model hdr2E_flow2s_model \
@@ -136,7 +136,7 @@ python run_model.py --gpu_ids 0 --model hdr3E_flow2s_model \
 ```
 
 ### Testing on the captured dynamic without GT dataset
-The dynamic with GT dataset can be found in One Drive (`/Real_Dataset/Dynamic_noGT/`).
+The dynamic with GT dataset can be found in BaiduYun (`/Real_Dataset/Dynamic_noGT/`).
 ```shell
 # Test our method on two-exposure data. Download dynamic_data_noGT_2exp_RGB_JPG.tgz and unzip to data/
 # Note that we provide the JPG dataset only for illustrating the testing process
@@ -171,7 +171,7 @@ python utils/tonemapper.py -i /path/to/HDR/
 ```
 
 ### Precomputed results
-The precomputed results can be found in One Drive (`/Results`).
+The precomputed results can be found in BaiduYun (`/Results`).
 
 ## Training
 The training process is described in [docs/training.md](docs/training.md).
