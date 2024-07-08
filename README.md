@@ -185,7 +185,7 @@ If you find this code useful in your research, please consider citing:
 ```
 @article{chen2021hdr,
   title={{HDR} Video Reconstruction: A Coarse-to-fine Network and A Real-world Benchmark Dataset},
-  author={Chen, Guanying and Chen, Chaofeng and Guo, Shi and Liang, Zhetong and Wong, Kwan-Yee K and Zhang, Lei},
+  author={Chen, Guanying and Chen, Chaofeng and Guo, Shi and Liang, Zhetong and Wong, Kwan-Yee~K. and Zhang, Lei},
   journal=ICCV,
   year={2021}
 }
