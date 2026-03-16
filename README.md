@@ -40,7 +40,7 @@
 ## Overview:
 We provide testing and training codes.
 Details of the training and testing dataset can be found in [DeepHDRVideo-Dataset](https://guanyingc.github.io/DeepHDRVideo-Dataset/).
-Datasets, the trained models, and the computed results can be download in [BaiduYun](https://pan.baidu.com/s/19SkOFmOdlQTujuazMlUq2Q?pwd=xwmq).
+Datasets, the trained models, and the computed results can be download in [Huggingface](https://huggingface.co/datasets/guanyingc/DeepHDRVideo_Dataset) or [BaiduYun](https://pan.baidu.com/s/19SkOFmOdlQTujuazMlUq2Q?pwd=xwmq).
 
 ### Dependencies
 This method is implemented in [PyTorch](https://pytorch.org/) and tested with Ubuntu (14.04 and 16.04) and Centos 7. 
